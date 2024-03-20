@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import InputBar from './InputBar';
 
 function App() {
+  const [colour,setColour] = useState('');
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    console.log(colour);
+    document.getElementsByClassName('container')[0].style.backgroundColor = `${colour}`;
+    setColour('');
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container"> Empty Value </div>
+      <InputBar handleSubmit={handleSubmit} colour={colour} setColour={setColour}/>
     </div>
   );
 }
